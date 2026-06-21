@@ -1,0 +1,5 @@
+{
+  "os_types": ["linux", "windows", "mac_os"],
+  "cpu_options": [1, 2, 4, 8, 16],
+  "ram_options_gb": [4, 8, 16, 32, 64]
+}

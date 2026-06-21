@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Jessy",
+        "os_type": "windows",
+        "cpu": 4,
+        "ram": 16,
+        "status": "deleted",
+        "date_created": "2026-06-18T16:34:15.456495",
+        "date_deleted": "2026-06-18T16:35:57.532183"
+    },
+    {
+        "name": "Max",
+        "os_type": "linux",
+        "cpu": 8,
+        "ram": 32,
+        "status": "active",
+        "date_created": "2026-06-18T16:35:02.783825",
+        "date_deleted": null
+    }
+]
