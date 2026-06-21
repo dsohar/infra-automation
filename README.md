@@ -66,11 +66,9 @@ Attempting to run the installation script from native Windows will result in an 
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository_url>
+git clone git@github.com:dsohar/infra-automation.git
 cd infra-automation
 ```
-<!-- TODO -->
-Replace `<repository_url>` with the actual repository URL.
 
 ### 2. Create a Virtual Environment
 
