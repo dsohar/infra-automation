@@ -89,21 +89,11 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
----
-
-## Required Python Packages
-
 The project uses the following external packages:
 
 ```text
 pydantic==2.13.4
 tabulate==0.10.0
-```
-
-These packages will be installed automatically when running:
-
-```bash
-pip install -r requirements.txt
 ```
 
 ---
@@ -177,6 +167,3 @@ The application automatically creates the log directory if it does not already e
 * The installation script must exist in the `scripts` directory.
 * The installation script feature requires Linux, macOS, or WSL.
 * The project uses JSON files for persistence and does not require a database.
-
-```
-```
