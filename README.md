@@ -128,7 +128,7 @@ infra-automation/
 | **install.sh**          | Sample shell script executed through the application.                                                                      |
 | **requirements.txt**    | Lists the external Python packages required by the project.                                                                |
 | **README.md**           | Project documentation and installation guide.                                                                              |
-| **provisioning.log**          | Stores event logging fordifferent events. The log file and directory are created automatically if they do not already exist.                                                        |
+| **provisioning.log**          | Stores event logging for different events. The log file and directory are created automatically if they do not already exist.                                                        |
 
 ---
 
