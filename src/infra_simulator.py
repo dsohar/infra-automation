@@ -56,9 +56,10 @@ def main():
                 break
 
             elif user_choice == "0": # Easter Egg (Sorry, I couldn't help myself)
-                logging.info("User Selected: 0. Easter Egg")
-                print("My friend is in a band called 1023Mb. They haven't had a gig yet.")
-                input("\nPress Enter when you stop laughing. :D")
+                logging.info("User Selected: 0. Easter Egg Found!!!")
+                print("Remember, whenever you walk into a room and forget why you went there, \n"
+                      "it's entirely possible you just encountered an alien who had to erase your memory.")
+                input("\nPress Enter when your brain is done buffering :D")
 
         except Exception as e:
             logging.exception("Unexpected error")
