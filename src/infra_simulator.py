@@ -21,7 +21,7 @@ VALID_CHOICES = ["1", "2", "3", "4", "5", "6", "0"]
 def main():
     logging.info("Started project run")
 
-    print("Welcome to Daniel's CLI Project!!")
+    print("Welcome to Daniel's Infrastructure Simulator!!")
     while True: 
         while True:
             user_choice = input(MENU)
@@ -56,7 +56,7 @@ def main():
                 break
 
             elif user_choice == "0": # Easter Egg (Sorry, I couldn't help myself)
-                logging.info("User Selected: 0. Easter Egg Found!!!")
+                logging.info("User Selected: 0. Easter egg found!!!")
                 print("Remember, whenever you walk into a room and forget why you went there, \n"
                       "it's entirely possible you just encountered an alien who had to erase your memory.")
                 input("\nPress Enter when your brain is done buffering 👽👽👽")
