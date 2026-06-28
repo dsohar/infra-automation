@@ -4,34 +4,27 @@
 
 Infrastructure Simulator is a Python command-line application that simulates the management of virtual machine instances.
 
-The application allows users to:
-
-* Create machine instances
-* Delete machine instances
-* Display active machine instances
-* Display all machine instances
-* Execute an installation script
-* Record application activity in a log file
-
-Machine definitions are stored in JSON format and include:
-
-* Machine name
-* Operating system
-* CPU count
-* RAM size
-* Status
-* Creation date
-* Deletion date
+The application allows users to create, delete and display virtual machine definitions stored in JSON files. It also includes the ability to execute an installation script, providing a foundation for future infrastructure automation.
 
 ---
 
-## Requirements
+## Features
 
-### Python Version
+* Create virtual machine instances
+* Delete existing machine instances
+* Display active machine instances
+* Display all machine instances
+* Execute an installation script
+* Log application activity and errors
+* Store machine definitions in JSON format
 
-This project was developed and tested using:
+---
 
-Python 3.14.4
+## System Requirements
+
+### Python
+
+This project was developed and tested using **Python 3.14.4**.
 
 Verify your Python version:
 
@@ -39,62 +32,103 @@ Verify your Python version:
 python3 --version
 ```
 
----
+### Operating System
 
-## Supported Operating Systems
+The application supports:
 
-The application can be executed on:
+* Linux
+* macOS
+* Windows
+
+**Note:** The **Run Install Script** option requires Bash and therefore only works on:
 
 * Linux
 * macOS
 * Windows Subsystem for Linux (WSL)
 
-Most application features work on any operating system supported by Python.
-
-The **Run Install Script** feature requires Bash and therefore can only be executed from:
-
-* Linux
-* macOS
-* WSL
-
-Attempting to run the installation script from native Windows will result in an error.
+All other application features work on native Windows.
 
 ---
 
 ## Installation
 
-### 1. Clone the Repository
+### 1. Clone the repository
 
 ```bash
 git clone git@github.com:dsohar/infra-automation.git
 cd infra-automation
 ```
 
-### 2. Create a Virtual Environment
+### 2. Create a virtual environment
+
+Linux / macOS / WSL
 
 ```bash
 python3 -m venv .venv
-```
-
-### 3. Activate the Virtual Environment
-
-Linux / macOS / WSL:
-
-```bash
 source .venv/bin/activate
 ```
-### 4. Install Dependencies
+
+Windows
+
+```powershell
+python -m venv .venv
+.venv\Scripts\activate
+```
+
+### 3. Install the required packages
 
 ```bash
 pip install -r requirements.txt
 ```
 
-The project uses the following external packages:
+The project depends on:
+
+* pydantic 2.13.4
+* tabulate 0.10.0
+
+---
+
+## Project Structure
 
 ```text
-pydantic==2.13.4
-tabulate==0.10.0
+infra-automation/
+│
+├── configs/
+│   ├── allowed_values.json
+│   └── instances.json
+│
+├── logs/
+│   └── provisioning.log
+│
+├── scripts/
+│   └── install.sh
+│
+├── src/
+│   ├── infra_simulator.py
+│   ├── machine.py
+│   ├── machine_manager.py
+│   ├── paths.py
+│   └── script_runner.py
+│
+├── requirements.txt
+└── README.md
 ```
+
+### File Description
+
+| File                    | Purpose                                                                                                                    |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| **infra_simulator.py**  | Main application entry point. Displays the menu and handles user interaction.                                              |
+| **machine.py**          | Defines the `Machine` data model using Pydantic.                                                                           |
+| **machine_manager.py**  | Contains the business logic for creating, deleting and displaying machines.                                                |
+| **script_runner.py**    | Executes the installation shell script and handles related validation.                                                     |
+| **paths.py**            | Stores all project file and directory paths.                                                                               |
+| **allowed_values.json** | Defines the valid operating systems, CPU options and RAM options available to users.                                       |
+| **instances.json**      | Stores all machine instances created by the application. Deleted machines remain in the file with a status of `"deleted"`. |
+| **install.sh**          | Sample shell script executed through the application.                                                                      |
+| **requirements.txt**    | Lists the external Python packages required by the project.                                                                |
+| **README.md**           | Project documentation and installation guide.                                                                              |
+| **provisioning.log**          | Stores event logging fordifferent events. The log file and directory are created automatically if they do not already exist.                                                        |
 
 ---
 
@@ -108,9 +142,9 @@ python3 src/infra_simulator.py
 
 ---
 
-## Available Menu Options
+## Menu Options
 
-```text
+```
 1. Create a machine
 2. Delete a machine
 3. Display all active machines
@@ -119,51 +153,33 @@ python3 src/infra_simulator.py
 6. Exit
 ```
 
----
-
-## Configuration File
-
-### allowed_values.json
-
-Contains the valid options available when creating machine instances.
-
----
-
-## Data Storage
-
-### instances.json
-
-Stores all machine instances created by the application.
-
-Deleted machines are not removed from the file. Instead, they are marked with:
-
-```json
-{
-  "status": "deleted"
-}
-```
-
-and a deletion timestamp is recorded.
-
-If the file does not exist, it will be created automatically when the first machine is added.
+(There may also be a small hidden easter egg.)
 
 ---
 
 ## Logging
 
-Application events are written to:
+The application writes log messages to:
 
-```text
+```
 logs/provisioning.log
 ```
-The application automatically creates the log directory if it does not already exist.
+
+The log file and directory are created automatically if they do not already exist.
+
+Examples of logged events include:
+
+* Application startup
+* Machine creation
+* Machine deletion
+* Script execution
+* Warnings
+* Errors
 
 ---
 
 ## Notes
 
-* Machine names must be unique among active machines.
-* Deleted machine names may be reused.
+* Machine names must be unique among active machines. (Deleted machine names may be reused)
+* Machine definitions are stored in JSON files.
 * The installation script must exist in the `scripts` directory.
-* The installation script feature requires Linux, macOS, or WSL.
-* The project uses JSON files for persistence and does not require a database.
