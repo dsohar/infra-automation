@@ -59,7 +59,7 @@ def main():
                 logging.info("User Selected: 0. Easter Egg Found!!!")
                 print("Remember, whenever you walk into a room and forget why you went there, \n"
                       "it's entirely possible you just encountered an alien who had to erase your memory.")
-                input("\nPress Enter when your brain is done buffering :D")
+                input("\nPress Enter when your brain is done buffering 👽👽👽")
 
         except Exception as e:
             logging.exception("Unexpected error")
